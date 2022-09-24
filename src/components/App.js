@@ -20,8 +20,18 @@ function App() {
   const [data, setData] = useState([]);
 
   /**
-   * fetch data from api on mount. 
+   * fetch data from api on mount.  
    */
+
+  const fetchData = async () => {
+    const data = await fetch("https://jsonplaceholder.typicode.com/users");
+    const final = await data.json();
+    setData(final)
+  }
+
+  useEffect(() => {
+    fetchData();
+  } , [])
 
   return (
   <div className='App'>
